@@ -491,22 +491,22 @@ const AvaAiPage: React.FC<AvaAiPageProps> = ({ onNavigate, onEarnCoins }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-gray-50">
-      <header className="p-4 bg-white border-b border-gray-200 flex items-center space-x-3 sticky top-0 z-10">
-        <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-            <AvaAiIcon className="w-7 h-7 text-indigo-600" />
+    <div className="flex flex-col h-full bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <header className="p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center space-x-3 sticky top-0 z-10 transition-colors duration-200">
+        <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center">
+            <AvaAiIcon className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />
       </div>
         <div>
-            <h1 className="text-lg font-bold text-gray-800">Ava AI</h1>
-            <p className="text-sm text-green-500 font-semibold flex items-center">
-                <span className="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span>
+            <h1 className="text-lg font-bold text-gray-800 dark:text-white">Ava AI</h1>
+            <p className="text-sm text-green-500 dark:text-green-400 font-semibold flex items-center">
+                <span className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full mr-1.5"></span>
                 Online
             </p>
         </div>
       </header>
       
 
-      <main className="flex-grow p-4 space-y-4 overflow-y-auto">
+      <main className="flex-grow p-4 space-y-4 overflow-y-auto bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
         {messages.map((msg, index) => (
           <motion.div
             key={index}
@@ -516,15 +516,15 @@ const AvaAiPage: React.FC<AvaAiPageProps> = ({ onNavigate, onEarnCoins }) => {
             className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             {msg.sender === 'ava' && (
-              <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <AvaAiIcon className="w-5 h-5 text-indigo-500" />
+              <div className="w-8 h-8 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                <AvaAiIcon className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
               </div>
             )}
             <div
-              className={`max-w-xs md:max-w-md p-3 rounded-2xl shadow-sm ${
+              className={`max-w-xs md:max-w-md p-3 rounded-2xl shadow-sm transition-colors duration-200 ${
                 msg.sender === 'user'
-                  ? 'bg-indigo-600 text-white rounded-br-lg'
-                  : 'bg-white text-gray-800 border border-gray-200 rounded-bl-lg'
+                  ? 'bg-indigo-600 dark:bg-indigo-700 text-white rounded-br-lg'
+                  : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 rounded-bl-lg'
               }`}
             >
               {msg.attachment && (
@@ -536,8 +536,8 @@ const AvaAiPage: React.FC<AvaAiPageProps> = ({ onNavigate, onEarnCoins }) => {
                       className="max-w-full h-auto rounded-lg mb-2"
                     />
                   ) : (
-                    <div className="bg-white/20 rounded-lg p-3 mb-2">
-                      <p className="text-xs">📄 {msg.attachment.file.name}</p>
+                    <div className="bg-white/20 dark:bg-gray-700/50 rounded-lg p-3 mb-2">
+                      <p className="text-xs text-white dark:text-gray-200">📄 {msg.attachment.file.name}</p>
                     </div>
                   )}
                 </div>
@@ -554,14 +554,14 @@ const AvaAiPage: React.FC<AvaAiPageProps> = ({ onNavigate, onEarnCoins }) => {
                     exit={{ opacity: 0 }}
                     className="flex items-end gap-2 justify-start"
                 >
-                    <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <AvaAiIcon className="w-5 h-5 text-indigo-500" />
+                    <div className="w-8 h-8 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                        <AvaAiIcon className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
                     </div>
-                    <div className="p-3 rounded-2xl bg-white border border-gray-200 rounded-bl-lg shadow-sm">
+                    <div className="p-3 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-bl-lg shadow-sm">
                         <div className="flex items-center space-x-1">
-                            <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }} className="w-2 h-2 bg-gray-400 rounded-full" />
-                            <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 0.8, delay: 0.1, repeat: Infinity, ease: "easeInOut" }} className="w-2 h-2 bg-gray-400 rounded-full" />
-                            <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 0.8, delay: 0.2, repeat: Infinity, ease: "easeInOut" }} className="w-2 h-2 bg-gray-400 rounded-full" />
+                            <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }} className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full" />
+                            <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 0.8, delay: 0.1, repeat: Infinity, ease: "easeInOut" }} className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full" />
+                            <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 0.8, delay: 0.2, repeat: Infinity, ease: "easeInOut" }} className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full" />
                         </div>
                     </div>
                 </motion.div>
@@ -570,8 +570,8 @@ const AvaAiPage: React.FC<AvaAiPageProps> = ({ onNavigate, onEarnCoins }) => {
         <div ref={messagesEndRef} />
       </main>
 
-      <footer className="p-3 bg-white border-t border-gray-200 sticky bottom-0">
-        <div className="flex items-center bg-gray-100 rounded-full p-1">
+      <footer className="p-3 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 sticky bottom-0 transition-colors duration-200">
+        <div className="flex items-center bg-gray-100 dark:bg-gray-700 rounded-full p-1">
           <input
             ref={fileInputRef}
             type="file"
@@ -582,10 +582,10 @@ const AvaAiPage: React.FC<AvaAiPageProps> = ({ onNavigate, onEarnCoins }) => {
           />
           <label
             htmlFor="file-upload"
-            className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer hover:bg-gray-300 transition-colors mr-1"
+            className="w-10 h-10 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors mr-1"
             title="Upload document or image"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
             </svg>
           </label>
@@ -595,16 +595,16 @@ const AvaAiPage: React.FC<AvaAiPageProps> = ({ onNavigate, onEarnCoins }) => {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Ask Ava or upload a document..."
-            className="bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none flex-grow ml-2 text-sm"
+            className="bg-transparent text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none flex-grow ml-2 text-sm"
           />
           {uploadedFile && (
-            <span className="text-xs text-indigo-600 mr-2 flex items-center">
+            <span className="text-xs text-indigo-600 dark:text-indigo-400 mr-2 flex items-center">
               📎 {uploadedFile.name.length > 15 ? uploadedFile.name.substring(0, 15) + '...' : uploadedFile.name}
             </span>
           )}
           <button
             onClick={() => handleSendMessage()}
-            className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 disabled:bg-indigo-300 transition-colors"
+            className="w-10 h-10 bg-indigo-600 dark:bg-indigo-700 rounded-full flex items-center justify-center flex-shrink-0 disabled:bg-indigo-300 dark:disabled:bg-indigo-900 transition-colors"
             disabled={!inputValue.trim() && !uploadedFile}
           >
             <PaperAirplaneIcon className="w-5 h-5 text-white" />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { DarkModeProvider } from './contexts/DarkModeContext';
 import BottomNav from './components/BottomNav';
 import MyCarsPage from './components/MyCarsPage';
 import Dashboard from './components/Dashboard';
@@ -218,7 +219,7 @@ const App: React.FC = () => {
         default:
             return (
                  <>
-                    <main className="flex-grow overflow-y-auto pb-24 overflow-x-hidden">
+                    <main className="flex-grow overflow-y-auto pb-24 overflow-x-hidden bg-white dark:bg-gray-800 transition-colors duration-200">
                         {renderTabContent()}
                     </main>
                     <BottomNav activeTab={activeTab} onTabChange={handleTabChange} />
@@ -228,11 +229,13 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#F3F4F8] min-h-screen font-sans flex justify-center">
-      <div className={`w-full max-w-sm mx-auto ${currentPage === 'game' ? '' : 'bg-white shadow-lg'} flex flex-col`}>
-        {renderPage()}
+    <DarkModeProvider>
+      <div className="bg-[#F3F4F8] dark:bg-gray-900 min-h-screen font-sans flex justify-center transition-colors duration-200">
+        <div className={`w-full max-w-sm mx-auto ${currentPage === 'game' ? '' : 'bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-900/50'} flex flex-col transition-colors duration-200`}>
+          {renderPage()}
+        </div>
       </div>
-    </div>
+    </DarkModeProvider>
   );
 };
 

@@ -24,12 +24,12 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ icon: Icon, value, label, iconColor, iconBgColor }) => (
-  <div className="bg-white rounded-xl shadow-sm p-5 text-center flex flex-col items-center justify-center">
-    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${iconBgColor}`}>
+  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm dark:shadow-gray-900/50 p-5 text-center flex flex-col items-center justify-center transition-colors duration-200">
+    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${iconBgColor} dark:opacity-80`}>
       <Icon className={`w-5 h-5 ${iconColor}`} />
     </div>
-    <p className="text-2xl font-bold text-gray-900 mt-3">{value}</p>
-    <p className="text-sm text-gray-500">{label}</p>
+    <p className="text-2xl font-bold text-gray-900 dark:text-white mt-3">{value}</p>
+    <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
   </div>
 );
 
@@ -56,14 +56,14 @@ const StreakItem: React.FC<StreakItemProps> = ({ title, value, goal, icon: Icon,
       <div className="flex justify-between items-center mb-1">
         <div className="flex items-center space-x-2">
           <Icon className={`w-5 h-5 ${valueColor}`} />
-          <p className="font-semibold text-gray-800">{title}</p>
+          <p className="font-semibold text-gray-800 dark:text-gray-200">{title}</p>
         </div>
         <span className={`font-semibold ${valueColor}`}>{value}</span>
       </div>
-      <div className="w-full bg-gray-200 rounded-full h-1.5 mb-1">
+      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mb-1">
         <div className={`${progressColor} h-1.5 rounded-full transition-all duration-500`} style={{ width: `${progress}%` }}></div>
       </div>
-      {goal && <p className="text-xs text-gray-500">{goal}</p>}
+      {goal && <p className="text-xs text-gray-500 dark:text-gray-400">{goal}</p>}
     </div>
   );
 };
@@ -115,14 +115,14 @@ interface BadgeCardProps {
 
 const BadgeCard: React.FC<BadgeCardProps> = ({ icon: Icon, title, description, unlocked }) => {
   return (
-    <div className={`rounded-xl p-4 flex flex-col items-center justify-center text-center border ${unlocked ? 'bg-yellow-50 border-yellow-300' : 'bg-gray-100/60 border-gray-200'}`}>
+    <div className={`rounded-xl p-4 flex flex-col items-center justify-center text-center border transition-colors duration-200 ${unlocked ? 'bg-yellow-50 dark:bg-yellow-900/30 border-yellow-300 dark:border-yellow-700' : 'bg-gray-100/60 dark:bg-gray-700/60 border-gray-200 dark:border-gray-600'}`}>
       {unlocked && Icon ? (
-        <Icon className="w-8 h-8 text-pink-500 mb-2" />
+        <Icon className="w-8 h-8 text-pink-500 dark:text-pink-400 mb-2" />
       ) : (
-        <LockIcon className="w-8 h-8 text-gray-400 mb-2" />
+        <LockIcon className="w-8 h-8 text-gray-400 dark:text-gray-500 mb-2" />
       )}
-      <p className={`font-semibold ${unlocked ? 'text-gray-800' : 'text-gray-600'}`}>{title}</p>
-      <p className="text-xs text-gray-500">{description}</p>
+      <p className={`font-semibold ${unlocked ? 'text-gray-800 dark:text-gray-200' : 'text-gray-600 dark:text-gray-400'}`}>{title}</p>
+      <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
     </div>
   );
 };
@@ -229,9 +229,9 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigateBack, xp, level, ti
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen p-4 pb-10">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen p-4 pb-10 transition-colors duration-200">
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-2xl p-4 shadow-md relative">
+      <header className="bg-gradient-to-r from-purple-500 to-indigo-600 dark:from-purple-600 dark:to-indigo-700 text-white rounded-2xl p-4 shadow-md dark:shadow-gray-900/50 relative transition-colors duration-200">
         <button onClick={onNavigateBack} className="absolute top-4 right-4 p-2 z-10 hover:bg-white/20 rounded-full transition-colors">
           <BackArrowIcon className="w-5 h-5 text-white" />
         </button>
@@ -293,12 +293,12 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigateBack, xp, level, ti
       </section>
       
       {/* Active Streaks Section */}
-      <section className="mt-5 bg-white rounded-2xl p-5 shadow-sm">
-        <h2 className="text-lg font-semibold text-gray-900 flex items-center space-x-2">
+      <section className="mt-5 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm dark:shadow-gray-900/50 transition-colors duration-200">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
           <FireIcon className="w-5 h-5 text-orange-500" />
           <span>Active Streaks</span>
         </h2>
-        <p className="text-sm text-gray-500 mt-1 mb-5">Keep your streaks alive for bonus rewards!</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-5">Keep your streaks alive for bonus rewards!</p>
 
         <div className="space-y-5">
           {streaks.map((streak, index) => (
@@ -308,12 +308,12 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigateBack, xp, level, ti
       </section>
 
       {/* Badges Collection Section */}
-      <section className="mt-5 bg-white rounded-2xl p-5 shadow-sm">
-        <h2 className="text-lg font-semibold text-gray-900 flex items-center space-x-2">
+      <section className="mt-5 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm dark:shadow-gray-900/50 transition-colors duration-200">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
             <BadgeIcon className="w-5 h-5 text-purple-500" />
             <span>Badges Collection</span>
         </h2>
-        <p className="text-sm text-gray-500 mt-1 mb-5">Collected {badges.filter(b => b.unlocked).length} of {badges.length} badges</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-5">Collected {badges.filter(b => b.unlocked).length} of {badges.length} badges</p>
         <div className="grid grid-cols-2 gap-4">
             {badges.map((badge, index) => (
                 <BadgeCard key={index} {...badge} />
@@ -322,20 +322,20 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigateBack, xp, level, ti
       </section>
 
       {/* Support Section */}
-      <section className="mt-5 bg-white rounded-2xl p-5 shadow-sm">
-        <h2 className="text-lg font-semibold text-gray-700 mb-4">Support</h2>
+      <section className="mt-5 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm dark:shadow-gray-900/50 transition-colors duration-200">
+        <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">Support</h2>
         <div className="space-y-2">
-          <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors text-left">
-            <span className="text-gray-900 font-medium">FAQs</span>
-            <ChevronRightIcon className="w-5 h-5 text-gray-400" />
+          <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors text-left">
+            <span className="text-gray-900 dark:text-gray-200 font-medium">FAQs</span>
+            <ChevronRightIcon className="w-5 h-5 text-gray-400 dark:text-gray-500" />
           </button>
-          <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors text-left">
-            <span className="text-gray-900 font-medium">Contact us</span>
-            <ChevronRightIcon className="w-5 h-5 text-gray-400" />
+          <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors text-left">
+            <span className="text-gray-900 dark:text-gray-200 font-medium">Contact us</span>
+            <ChevronRightIcon className="w-5 h-5 text-gray-400 dark:text-gray-500" />
           </button>
-          <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors text-left">
-            <span className="text-gray-900 font-medium">About QIC app</span>
-            <ChevronRightIcon className="w-5 h-5 text-gray-400" />
+          <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors text-left">
+            <span className="text-gray-900 dark:text-gray-200 font-medium">About QIC app</span>
+            <ChevronRightIcon className="w-5 h-5 text-gray-400 dark:text-gray-500" />
           </button>
         </div>
       </section>
